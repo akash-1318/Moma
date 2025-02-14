@@ -50,7 +50,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { categoryColors } from "@/data/categories";
-// import { bulkDeleteTransactions } from "@/actions/account";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
@@ -181,7 +180,8 @@ export function TransactionTable({ transactions }) {
 
   useEffect(() => {
     if (deleted && !deleteLoading) {
-      toast.error("Transactions deleted successfully");
+        toast.error("Transactions deleted successfully");
+        setSelectedIds([]);
     }
   }, [deleted, deleteLoading]);
 
@@ -275,6 +275,7 @@ export function TransactionTable({ transactions }) {
           )}
         </div>
       </div>
+
       {/* Transactions Table */}
       <div className="rounded-md border">
         <Table>
@@ -450,6 +451,7 @@ export function TransactionTable({ transactions }) {
           </TableBody>
         </Table>
       </div>
+
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
