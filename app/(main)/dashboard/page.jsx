@@ -6,6 +6,7 @@ import React from "react";
 import AccountCard from "./_components/account-card";
 import { BudgetProgress } from "./_components/budget-progress";
 import { getCurrentBudget } from "@/actions/budget";
+import { DashboardOverview } from "./_components/transaction-overview";
 
 const DashboardPage = async () => {
   const [accounts, transactions] = await Promise.all([
@@ -26,7 +27,14 @@ const DashboardPage = async () => {
       <BudgetProgress
         initialBudget={budgetData?.budget}
         currentExpenses={budgetData?.currentExpenses || 0}
+          />
+          
+    {/* Dashboard Overview */}
+      <DashboardOverview
+        accounts={accounts}
+        transactions={transactions || []}
       />
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-6">
         <CreateAccountDrawer>
           <Card className="hover:shadow-md transition-shadow cursor-pointer border-dashed">
