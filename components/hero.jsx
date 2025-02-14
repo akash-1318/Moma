@@ -41,11 +41,11 @@ const HeroSection = () => {
               Get Started
             </Button>
           </Link>
-          <Link href={"/"}>
+          {/* <Link href={"/"}>
             <Button variant="outline" size="lg" className="px-8">
               Watch Demo
             </Button>
-          </Link>
+          </Link> */}
         </div>
         <div className="hero-image-wrapper mt-5 md:mt-0">
           <div ref={imageRef} className="hero-image">

@@ -30,10 +30,12 @@ const DashboardPage = async () => {
           />
           
     {/* Dashboard Overview */}
-      <DashboardOverview
+    <div className="mt-6">
+       <DashboardOverview
         accounts={accounts}
         transactions={transactions || []}
-      />
+          />
+    </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-6">
         <CreateAccountDrawer>
