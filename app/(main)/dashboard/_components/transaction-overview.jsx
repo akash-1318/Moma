@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   PieChart,
   Pie,
@@ -32,9 +32,10 @@ const COLORS = [
   "#9FA8DA",
 ];
 
-export function DashboardOverview({ accounts, transactions }) {
+export function DashboardOverview({ accounts, transactions, defaultAccount }) {
   const [selectedAccountId, setSelectedAccountId] = useState(
-    accounts.find((a) => a.isDefault)?.id || accounts[0]?.id
+    // accounts.find((a) => a.isDefault)?.id || accounts[0]?.id
+    accounts?.find((a) => a.id === defaultAccount?.id)?.id || accounts[0]?.id
   );
 
   // Filter transactions for selected account
@@ -75,6 +76,15 @@ export function DashboardOverview({ accounts, transactions }) {
       value: amount,
     })
   );
+
+  useEffect(() => {
+    if (defaultAccount) {
+      const selectedAccount =
+        accounts?.find((a) => a.id === defaultAccount?.id)?.id ||
+        accounts[0]?.id;
+      setSelectedAccountId(selectedAccount);
+    }
+  }, [defaultAccount]);
 
   return (
     <div className="grid gap-4 md:grid-cols-2">

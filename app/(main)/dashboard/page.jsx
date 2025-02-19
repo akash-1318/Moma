@@ -27,15 +27,16 @@ const DashboardPage = async () => {
       <BudgetProgress
         initialBudget={budgetData?.budget}
         currentExpenses={budgetData?.currentExpenses || 0}
-          />
-          
-    {/* Dashboard Overview */}
-    <div className="mt-6">
-       <DashboardOverview
-        accounts={accounts}
-        transactions={transactions || []}
-          />
-    </div>
+      />
+
+      {/* Dashboard Overview */}
+      <div className="mt-6">
+        <DashboardOverview
+          accounts={accounts}
+          transactions={transactions || []}
+          defaultAccount={defaultAccount}
+        />
+      </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-6">
         <CreateAccountDrawer>

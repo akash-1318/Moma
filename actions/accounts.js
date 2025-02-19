@@ -15,6 +15,17 @@ const serializeDecimal = (obj) => {
   return serialized;
 };
 
+const serializeTransaction = (obj) => {
+  const serialized = { ...obj };
+  if (obj.balance) {
+    serialized.balance = obj.balance.toNumber();
+  }
+  if (obj.amount) {
+    serialized.amount = obj.amount.toNumber();
+  }
+  return serialized;
+};
+
 export async function getAccountWithTransactions(accountId) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
